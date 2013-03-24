@@ -3,14 +3,17 @@ package timeTracking.model;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
 import timeTracking.main.Controller;
-import timeTracking.main.Database;
 
 public class ProcessFactory
 {
+	private ProcessFactory()
+	{}
+	
 	public static Process createNewProcess()
 	{	
 		return createNewProcess("", "");	
@@ -31,10 +34,8 @@ public class ProcessFactory
 		String sqlQuery = "INSERT INTO " + Database.processTableName + " (" +				
 				Database.processColoumnNames.name + ", " + 
 				Database.processColoumnNames.description + ", " +
-				Database.processColoumnNames.userID + ", " +
-				Database.processColoumnNames.startDate + ", " +
-				Database.processColoumnNames.endDate + ") " +
-				"VALUES ('" + name + "', '" + description + "', '" + Controller.userID + "', '" + process.getStartDate() + "', '" + process.getEndDate() + "')";
+				Database.processColoumnNames.userID + ") " +
+				"VALUES ('" + name + "', '" + description + "', '" + Controller.userID + "')";
 		System.out.println(sqlQuery);
 		
 		try
@@ -82,16 +83,16 @@ public class ProcessFactory
 	}
 	
 	
-	public static HashMap<Integer, Process> getProcessesByRange(Date startDate, Date endDate)
+	public static HashMap<Integer, Process> getProcessesByDay(Timestamp day)
 	{
 		String sql = "SELECT " + 
 				Database.processColoumnNames.id + ", " +
 				Database.processColoumnNames.name + ", " + 
 				Database.processColoumnNames.description + ", " + 
 				Database.processColoumnNames.startDate + ", " + 
-				Database.processColoumnNames.endDate + ", " +
-				"FROM " + Database.processTableName + " ";
-		sql += "WHERE startDate>='" + startDate +"' AND endDate<='" + endDate +"'";
+				Database.processColoumnNames.endDate + 
+				" FROM " + Database.processTableName;		
+		sql += " WHERE DATEDIFF('" + day + "'," +  Database.processColoumnNames.startDate + ") = 0";
 		
 		return readProcesses(sql);	
 	}
@@ -107,6 +108,7 @@ public class ProcessFactory
 		try
 		{
 			ResultSet result = Controller.db.runSql(sqlQuery);
+			int index = 0;
 			while (result.next())
 			{
 				Process process = new Process();
@@ -115,12 +117,10 @@ public class ProcessFactory
 				process.setName(result.getString(Database.processColoumnNames.name));
 				process.setDescription(result.getString(Database.processColoumnNames.description));
 				process.setStartDate(result.getTimestamp(Database.processColoumnNames.startDate));
-	          
-				try { process.setEndDate(result.getTimestamp(Database.processColoumnNames.endDate)); }
-				catch (Exception e) { e.printStackTrace(); }
-	          
-				processes.put(process.getId(), process);
-	        }		
+				process.setEndDate(result.getTimestamp(Database.processColoumnNames.endDate));
+
+				processes.put(index++, process);
+	        }
 			
 		}
 		catch (SQLException e)

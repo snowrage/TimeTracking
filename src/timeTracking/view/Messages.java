@@ -1,4 +1,4 @@
-package timeTracking.views;
+package timeTracking.view;
 
 import java.beans.Beans;
 import java.util.MissingResourceException;
@@ -18,7 +18,7 @@ public class Messages {
 	// Bundle access
 	//
 	////////////////////////////////////////////////////////////////////////////
-	private static final String BUNDLE_NAME = "timeTracking.views.messages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "timeTracking.view.messages"; //$NON-NLS-1$
 	private static final ResourceBundle RESOURCE_BUNDLE = loadBundle();
 	private static ResourceBundle loadBundle() {
 		return ResourceBundle.getBundle(BUNDLE_NAME);

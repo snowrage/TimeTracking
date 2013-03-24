@@ -4,12 +4,20 @@ import java.sql.Timestamp;
 import java.util.HashMap;
 
 import timeTracking.main.Controller;
-import timeTracking.main.Database;
 
 public class ProcessManager
 {
 	private static HashMap<Integer, Process> processMap = new HashMap<Integer, Process>();
 	private static Process currentProcess;
+	
+	public static Process getCurrentProcess()
+	{
+		return currentProcess;
+	}
+	
+	
+	private ProcessManager()
+	{}
 	
 	public static void startNewProcess()
 	{
@@ -35,6 +43,11 @@ public class ProcessManager
 		currentProcess = process;		
 	}
 	
+	public static void pauseProcess()
+	{
+	
+	}
+	
 	public static void endProcess()
 	{	
 		try
@@ -54,5 +67,7 @@ public class ProcessManager
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
-	}		
+	}
+	
+	
 }

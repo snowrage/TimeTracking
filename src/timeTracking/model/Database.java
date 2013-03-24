@@ -1,5 +1,6 @@
-package timeTracking.main;
+package timeTracking.model;
 
+import java.io.Console;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -7,17 +8,28 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 
+import timeTracking.main.Controller;
+
 public class Database
 {
 	public static final String processTableName = "processes";
 	public static class processColoumnNames
 	{
-		public static String id = "id";
-		public static String name = "name";
-		public static String description = "description";
-		public static String startDate = "startDate";
-		public static String endDate = "endDate";
-		public static String userID = "userID";
+		public static final String id = "id";
+		public static final String name = "name";
+		public static final String description = "description";
+		public static final String startDate = "startDate";
+		public static final String endDate = "endDate";
+		public static final String userID = "userID";
+	}
+	public static final String userTableName = "users";
+	public static class usersColoumnsNames
+	{
+		public static final String id = "user_id";
+		public static final String vorname = "vorname";
+		public static final String nachname = "nachname";
+		public static final String username = "username";
+		public static final String password = "passwort";		
 	}
 
 	
@@ -108,6 +120,7 @@ public class Database
 	public ResultSet runSql(String sql) throws SQLException
 	{
 		Statement sta = conn.createStatement();
+		System.out.println(sql);
 		return sta.executeQuery(sql);
 	}
 	public void execute(String sqlQuery) throws SQLException
