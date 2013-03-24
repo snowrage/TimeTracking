@@ -36,7 +36,6 @@ public class ProcessManager
 			
 		} catch (Exception e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 		processMap.put(process.getId(), process);		
@@ -45,7 +44,42 @@ public class ProcessManager
 	
 	public static void pauseProcess()
 	{
+		try
+		{
+			// get time with serverTime (don't use local time)
+			Timestamp now = Controller.db.getNow();		
+			String sqlQuery = "UPDATE " + Database.processTableName + " " + 
+						"SET " + Database.processColoumnNames.startPause + "='" + now + "'" +
+						"WHERE " + Database.processColoumnNames.id + "='" + currentProcess.getId() + "';";
+			Controller.db.execute(sqlQuery);
+				
+			// save time to process
+			currentProcess.setStartPause(now);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}		
+	}
 	
+	public static void continueProcess()
+	{
+		try
+		{
+			// get time with serverTime (don't use local time)
+			Timestamp now = Controller.db.getNow();		
+			String sqlQuery = "UPDATE " + Database.processTableName + " " + 
+						"SET " + Database.processColoumnNames.endPause + "='" + now + "'" +
+						"WHERE " + Database.processColoumnNames.id + "='" + currentProcess.getId() + "';";
+			Controller.db.execute(sqlQuery);
+				
+			// save time to process
+			currentProcess.setEndPause(now);
+			
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}		
 	}
 	
 	public static void endProcess()
@@ -64,7 +98,6 @@ public class ProcessManager
 			
 		} catch (Exception e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 	}

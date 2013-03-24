@@ -53,6 +53,16 @@ public class Controller
 	{
 		ProcessManager.endProcess();
 	}
+	
+	public static void pauseProcess()
+	{
+		ProcessManager.pauseProcess();	
+	}
+	
+	public static void continueProcess()	
+	{
+		ProcessManager.continueProcess();
+	}
 
 	public static Timestamp getWorkStart()
 	{

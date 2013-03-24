@@ -332,7 +332,11 @@ public class ProcessView extends JFrame
 		public void actionPerformed(ActionEvent e)
 		{
 			btnContinueProcess.setEnabled(true);
-			btnPauseProcess.setEnabled(false);				
+			btnPauseProcess.setEnabled(false);	
+			
+			Controller.pauseProcess();			
+			Timestamp startPause = Controller.getWorkStart();			
+			lblWorkStartTime.setText(timeToString(startPause));
 		}
 	};
 	
@@ -342,6 +346,10 @@ public class ProcessView extends JFrame
 		{
 			btnContinueProcess.setEnabled(false);
 			btnPauseProcess.setEnabled(true);
+			
+			Controller.continueProcess();			
+			Timestamp endPause = Controller.getWorkStart();			
+			lblWorkStartTime.setText(timeToString(endPause));
 		}
 	};
 	

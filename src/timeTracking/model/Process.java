@@ -2,13 +2,14 @@ package timeTracking.model;
 
 import java.sql.Timestamp;
 
-public class Process
-{
+public class Process {
 	private int id;
 	private String name;
 	private String description;
 	private Timestamp startDate = null;
 	private Timestamp endDate = null;
+	private Timestamp startPause = null;
+	private Timestamp endPause = null;
 
 	private boolean started;
 	private boolean paused;
@@ -17,74 +18,76 @@ public class Process
 	// ###################
 	// ## Getter/Setter ##
 	// ###################
-	public int getId()
-	{
+	public int getId() {
 		return id;
 	}
 
-	public void setId(int id)
-	{
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 
-	public void setName(String name)
-	{
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public String getDescription()
-	{
+	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(String description)
-	{
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public Timestamp getStartDate()
-	{
+	public Timestamp getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Timestamp startDate)
-	{
+	public void setStartDate(Timestamp startDate) {
 		this.startDate = startDate;
 		this.started = true;
 	}
 
-	public Timestamp getEndDate()
-	{
+	public Timestamp getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Timestamp endDate)
-	{
-		if (this.started && endDate != null)
-		{
+	public void setEndDate(Timestamp endDate) {
+		if (this.started && endDate != null) {
 			this.endDate = endDate;
 			this.ended = true;
 		}
 	}
 
-	public boolean getStarted()
-	{
+	public boolean getStarted() {
 		return this.started;
 	}
 
-	public boolean getPaused()
-	{
+	public boolean getPaused() {
 		return this.paused;
 	}
 
-	public boolean getEnded()
-	{
+	public boolean getEnded() {
 		return this.ended;
+	}
+
+	public Timestamp getStartPause() {
+		return startPause;
+	}
+
+	public void setStartPause(Timestamp startPause) {
+		this.startPause = startPause;
+	}
+
+	public Timestamp getEndPause() {
+		return endPause;
+	}
+
+	public void setEndPause(Timestamp endPause) {
+		this.endPause = endPause;
 	}
 
 }

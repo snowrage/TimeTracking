@@ -1,6 +1,5 @@
 package timeTracking.model;
 
-import java.io.Console;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -20,6 +19,8 @@ public class Database
 		public static final String description = "description";
 		public static final String startDate = "startDate";
 		public static final String endDate = "endDate";
+		public static final String startPause = "startPause";
+		public static final String endPause = "endPause";
 		public static final String userID = "userID";
 	}
 	public static final String userTableName = "users";
