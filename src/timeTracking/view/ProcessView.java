@@ -18,7 +18,6 @@ import javax.swing.JPanel;
 
 import timeTracking.main.Controller;
 import timeTracking.model.Process;
-import timeTracking.model.ProcessManager;
 
 import com.michaelbaranov.microba.calendar.DatePicker;
 
@@ -336,7 +335,7 @@ public class ProcessView extends JFrame
 			
 			Controller.pauseProcess();			
 			Timestamp startPause = Controller.getWorkStart();			
-			lblWorkStartTime.setText(timeToString(startPause));
+			lblPauseStartTime.setText(timeToString(startPause));
 		}
 	};
 	
@@ -349,7 +348,7 @@ public class ProcessView extends JFrame
 			
 			Controller.continueProcess();			
 			Timestamp endPause = Controller.getWorkStart();			
-			lblWorkStartTime.setText(timeToString(endPause));
+			lblPauseEndTime.setText(timeToString(endPause));
 		}
 	};
 	
@@ -416,9 +415,14 @@ public class ProcessView extends JFrame
 		
 		if(p != null)
 		{
-			Timestamp startDate = p.getStartDate();
-			
+			Timestamp startDate = p.getStartDate();			
 			lblWorkStartTime.setText(timeToString(startDate));
+			
+			Timestamp pauseStart = p.getStartPause();
+			if(pauseStart != null) lblPauseStartTime.setText(timeToString(pauseStart));
+			
+			Timestamp pauseEnd = p.getEndPause();
+			if(pauseEnd != null) lblPauseEndTime.setText(timeToString(pauseEnd));
 			
 			Timestamp endDate = p.getEndDate();
 			if(endDate != null)
@@ -430,6 +434,8 @@ public class ProcessView extends JFrame
 		{
 			lblWorkStartTime.setText("-");
 			lblWorkEndTime.setText("-");
+			lblPauseStartTime.setText("-");
+			lblPauseEndTime.setText("-");
 		}		
 	}
 	

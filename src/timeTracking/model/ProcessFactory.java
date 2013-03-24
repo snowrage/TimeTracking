@@ -88,7 +88,9 @@ public class ProcessFactory
 				Database.processColoumnNames.name + ", " + 
 				Database.processColoumnNames.description + ", " + 
 				Database.processColoumnNames.startDate + ", " + 
-				Database.processColoumnNames.endDate + 
+				Database.processColoumnNames.endDate + ", " +
+				Database.processColoumnNames.startPause + ", " +
+				Database.processColoumnNames.endPause +
 				" FROM " + Database.processTableName;		
 		sql += " WHERE DATEDIFF('" + day + "'," +  Database.processColoumnNames.startDate + ") = 0";
 		
@@ -116,6 +118,8 @@ public class ProcessFactory
 				process.setDescription(result.getString(Database.processColoumnNames.description));
 				process.setStartDate(result.getTimestamp(Database.processColoumnNames.startDate));
 				process.setEndDate(result.getTimestamp(Database.processColoumnNames.endDate));
+				process.setStartPause(result.getTimestamp(Database.processColoumnNames.startPause));
+				process.setEndPause(result.getTimestamp(Database.processColoumnNames.endPause));
 
 				processes.put(index++, process);
 	        }
