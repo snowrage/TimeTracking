@@ -15,7 +15,7 @@ import timeTracking.model.Process;
 public class Controller
 {
 	public static int userID = 1;	
-	public static Database db = new Database();
+	public static Database db = null;
 
 	private static MainWindow w;
 	
@@ -80,6 +80,8 @@ public class Controller
 	{
 		ResultSet result = null;
 		boolean retValue = false;	
+		
+		db = new Database();
 		
 		String sqlQuery = "SELECT "+ Database.usersColoumnsNames.password + 
 							" From " + Database.userTableName +
