@@ -96,7 +96,7 @@ public class Database
 			System.out.println("Verbindung erfolgreich!");
 		}
 		catch (Exception e)
-		{
+		{			
 			e.printStackTrace();
 		}
 	}

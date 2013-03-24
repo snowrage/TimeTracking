@@ -1,14 +1,10 @@
 package timeTracking.view;
 
 
-import javax.swing.JFrame;
-
-import timeTracking.main.Controller;
-
 public class MainWindow
 {
-	public final JFrame logonView;	
-	public final JFrame processView;
+	public final LogonView logonView;	
+	public final ProcessView processView;
 
 	public MainWindow()
 	{
@@ -20,5 +16,7 @@ public class MainWindow
 	{
 		processView.setVisible(visibility);
 		logonView.setVisible(!visibility);
+		
+		if(visibility)processView.updateStatus();		
 	}	
 }

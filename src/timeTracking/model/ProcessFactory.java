@@ -1,6 +1,5 @@
 package timeTracking.model;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -52,7 +51,6 @@ public class ProcessFactory
 		
 		catch (SQLException e)
 		{
-			// TODO Auto-generated catch block
 			System.out.println("Erzeugen des neuen Prozesses fehlgeschlagen.");
 			e.printStackTrace();
 		}		

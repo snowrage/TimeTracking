@@ -168,17 +168,8 @@ public class ProcessView extends JFrame
 		btnPauseProcess.setEnabled(false);
 		btnEndProcess.setEnabled(false);		
 		
-		// status label
-		String status; 
-		try
-		{
-			 status = "Angemeldet als "  + Controller.getUserName();
-		}
-		catch(SQLException e)
-		{
-			status = e.getMessage();
-		}
-		lblStatus = new JLabel(status); //$NON-NLS-1$
+		// status label		
+		lblStatus = new JLabel(""); //$NON-NLS-1$
 		GridBagConstraints gbc_lblStatus = new GridBagConstraints();
 		gbc_lblStatus.insets = new Insets(0, 10, 5, 5);
 		gbc_lblStatus.anchor = GridBagConstraints.SOUTHWEST;
@@ -268,6 +259,19 @@ public class ProcessView extends JFrame
 		
 	}
 	
+	public void updateStatus()
+	{
+		String status; 
+		try
+		{
+			 status = "Angemeldet als "  + Controller.getUserName();
+			 lblStatus.setText(status);
+		}
+		catch(SQLException e)
+		{
+			status = e.getMessage();
+		}
+	}
 	
 	
 	//####################

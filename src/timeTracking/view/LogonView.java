@@ -12,6 +12,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import timeTracking.main.Controller;
+import timeTracking.main.UserException;
 
 public class LogonView extends JFrame
 {
@@ -68,10 +69,14 @@ public class LogonView extends JFrame
 					w.setVisibilityOfProcessFrame(true);
 				}
 			} 
-			catch (Exception e)
+			catch (UserException e)
 			{
 				// TODO Auto-generated catch block
 				JOptionPane.showMessageDialog(view, e.getMessage(),"Fehler beim Anmelden",  JOptionPane.INFORMATION_MESSAGE);
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
 			}
 		}
 	};

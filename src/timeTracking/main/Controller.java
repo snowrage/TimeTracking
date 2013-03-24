@@ -31,7 +31,7 @@ public class Controller
 				try
 				{
 					w = new MainWindow();	
-					w.setVisibilityOfProcessFrame(false);				
+					w.setVisibilityOfProcessFrame(false);		// set logonView visible		
 					
 				} catch (Exception e)
 				{
@@ -47,7 +47,7 @@ public class Controller
 	// #########################
 	public static void startNewProcess()
 	{
-		ProcessManager.startNewProcess();
+		ProcessManager.startNewProcess();	
 	}
 	public static void endProcess()	
 	{

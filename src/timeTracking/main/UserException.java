@@ -6,7 +6,7 @@ public class UserException extends Exception
 	{
 		public static final String WrongPassword = "Falsches Passwort.";
 		public static final String NoSuchUser = "Benutzer wurde nicht gefunden";
-		public static final String ToManyUsers = "In der Datenbank sind zu viele Benutzer mit dem selben Namen. Konsuliteren Sie den Datenbank-Administrator.";
+		public static final String ToManyUsers = "In der Datenbank sind zu viele Benutzer mit dem selben Namen. Konsulitieren Sie den Datenbank-Administrator.";
 	}
 	
 	
