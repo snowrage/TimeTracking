@@ -2,6 +2,12 @@ package timeTracking.main;
 
 public class UserException extends Exception
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	public class Messages
 	{
 		public static final String WrongPassword = "Falsches Passwort.";

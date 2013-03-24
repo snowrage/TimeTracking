@@ -21,10 +21,13 @@ import timeTracking.model.Process;
 
 import com.michaelbaranov.microba.calendar.DatePicker;
 
-public class ProcessView extends JFrame
+public class ProcessView extends JPanel
 {	
-	private MainWindow w;
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel panelDateNavigation;
 	private JLabel lblDate;
 	private DatePicker datePicker;
@@ -48,22 +51,21 @@ public class ProcessView extends JFrame
 	private JLabel lblPauseEndTime;
 	private JLabel lblWorkEndTime;
 	
-	public ProcessView(MainWindow w)
+	public ProcessView()
 	{
-		this.w = w;
 		initializeProcessFrame();
 	}
 	
 	private void initializeProcessFrame()
 	{		
 		setBounds(100, 100, 490, 229);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{525, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
-		getContentPane().setLayout(gridBagLayout);
+		setLayout(gridBagLayout);
 		
 		panelDateNavigation = new JPanel();
 		GridBagConstraints gbc_panelDateNavigation = new GridBagConstraints();
@@ -71,7 +73,8 @@ public class ProcessView extends JFrame
 		gbc_panelDateNavigation.fill = GridBagConstraints.BOTH;
 		gbc_panelDateNavigation.gridx = 0;
 		gbc_panelDateNavigation.gridy = 0;
-		getContentPane().add(panelDateNavigation, gbc_panelDateNavigation);
+		add(panelDateNavigation, gbc_panelDateNavigation);
+		
 		GridBagLayout gbl_panelDateNavigation = new GridBagLayout();
 		gbl_panelDateNavigation.columnWidths = new int[]{0, 115, 0, 0, 0};
 		gbl_panelDateNavigation.rowHeights = new int[]{0, 0};
@@ -117,7 +120,7 @@ public class ProcessView extends JFrame
 		gbc_panelProcessControl.fill = GridBagConstraints.HORIZONTAL;
 		gbc_panelProcessControl.gridx = 0;
 		gbc_panelProcessControl.gridy = 1;
-		getContentPane().add(panelProcessControl, gbc_panelProcessControl);
+		add(panelProcessControl, gbc_panelProcessControl);
 		GridBagLayout gbl_panelProcessControl = new GridBagLayout();
 		gbl_panelProcessControl.columnWidths = new int[]{0, 0, 0, 0, 0};
 		gbl_panelProcessControl.rowHeights = new int[]{0, 0};
@@ -174,7 +177,7 @@ public class ProcessView extends JFrame
 		gbc_lblStatus.anchor = GridBagConstraints.SOUTHWEST;
 		gbc_lblStatus.gridx = 0;
 		gbc_lblStatus.gridy = 3;
-		getContentPane().add(lblStatus, gbc_lblStatus);
+		add(lblStatus, gbc_lblStatus);
 		
 		// time labels
 		panel = new JPanel();
@@ -183,7 +186,7 @@ public class ProcessView extends JFrame
 		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.gridx = 0;
 		gbc_panel.gridy = 2;
-		getContentPane().add(panel, gbc_panel);
+		add(panel, gbc_panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{90, 363, };
 		gbl_panel.rowHeights = new int[]{0, 0, 0, 0, 0};
